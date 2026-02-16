@@ -1,0 +1,64 @@
+{
+  "// README": "Example OpenClaw config. Copy to ~/.openclaw/openclaw.json and customize.",
+
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-20250514",
+        "fallbacks": ["openai/gpt-4o-mini"]
+      },
+      "userTimezone": "America/Los_Angeles",
+      "timeFormat": "auto",
+      "subagents": {
+        "model": "anthropic/claude-sonnet-4-20250514",
+        "thinking": "low",
+        "maxConcurrent": 4,
+        "archiveAfterMinutes": 60
+      }
+    }
+  },
+
+  "gateway": {
+    "bind": "loopback",
+    "auth": {
+      "mode": "token"
+    },
+    "tailscale": {
+      "mode": "serve"
+    }
+  },
+
+  "tools": {
+    "exec": {
+      "host": "sandbox",
+      "security": "allowlist",
+      "ask": "on-miss"
+    }
+  },
+
+  "commands": {
+    "text": true,
+    "native": "auto",
+    "useAccessGroups": true,
+    "config": false,
+    "debug": false
+  },
+
+  "skills": {
+    "entries": {
+      "github": { "enabled": true },
+      "notion": { "enabled": true, "apiKey": "YOUR_NOTION_TOKEN" }
+    }
+  },
+
+  "plugins": {
+    "slots": {
+      "memory": "memory-core"
+    }
+  },
+
+  "browser": {
+    "enabled": true,
+    "defaultProfile": "openclaw"
+  }
+}
